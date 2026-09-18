@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Minecraft Chat</title>
-</head>
-<body>
-<h2>Send Message To Minecraft</h2>
-
-<input id="name" placeholder="Your Name"><br><br>
-<input id="msg" placeholder="Message"><br><br>
-
-<button onclick="send()">Submit</button>
-
 <script>
-async function send() {
-  alert("Website ready! Discord webhook baad me add karenge.");
+function sendMessage() {
+  const name = document.getElementById("name").value;
+  const msg = document.getElementById("message").value;
+
+  fetch("YAHAN_APNA_WEBHOOK_URL", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      content: "[WEB] " + name + ": " + msg
+    })
+  });
+
+  alert("Message Sent!");
 }
 </script>
-
-</body>
-</html>
